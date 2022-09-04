@@ -6,14 +6,7 @@ RUN apt-get update -y
 # Install Tkinter
 RUN apt-get install tk git fpc -y
 
-RUN apt-get update && DEBIAN_FRONTEND=“noninteractive” apt-get install -y --no-install-recommends \
-       nginx \
-       ca-certificates \
-       apache2-utils \
-       certbot \
-       python3-certbot-nginx \
-       sudo \
-       cifs-utils \
+RUN apt-get install -y nginx ca-certificates apache2-utils certbot python3-certbot-nginx sudo cifs-utils 
        
 RUN apt-get update && apt-get -y install cron
 RUN rm -rf /var/lib/apt/lists/*
