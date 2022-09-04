@@ -5,6 +5,20 @@ FROM python:3.10-slim-bullseye
 RUN apt-get update -y
 # Install Tkinter
 RUN apt-get install tk git fpc -y
+
+RUN apt-get update && DEBIAN_FRONTEND=“noninteractive” apt-get install -y --no-install-recommends \
+       nginx \
+       ca-certificates \
+       apache2-utils \
+       certbot \
+       python3-certbot-nginx \
+       sudo \
+       cifs-utils \
+       
+RUN apt-get update && apt-get -y install cron
+RUN rm -rf /var/lib/apt/lists/*
+COPY nginx.conf /etc/nginx/nginx.conf
+
 RUN git clone https://github.com/Mkoopm/plot-SIMsalabim.git
 
 # install the streamlit app
